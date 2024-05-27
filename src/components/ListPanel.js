@@ -2,9 +2,10 @@
  * @overview
  * Här är panelen som hanterar personlista, testlista, användaregenskaper
  * 
- * @author Viktor Johansson
+ * @author Ytterligare utveckling och anpassningar av Omid Nikzad.
+ * Ursprungliga klasser och komponenter av Viktor Johansson.
  * @version 1.0.0
- * @since November, 2023
+ * @since November, 2023. Uppdatering i Juni 2024
  */
 
 import React, { useEffect, useState } from 'react';
@@ -46,20 +47,6 @@ const ListPanel = ({ userRole, legPersData, listData, setChartData, testUser, se
     sortedPatients();
   }, [])
 
-
-  // // Create a new Set to store unique legPersId values
-  // const uniqueLegPersIds = new Set();
-
-  // // Filter the patients array
-  // const uniquePatients = patientsData.filter(patient => {
-  //   const isDuplicate = uniqueLegPersIds.has(patient.legPersId);
-  //   uniqueLegPersIds.add(patient.legPersId);
-  //   return !isDuplicate;
-  // });
-
-  //   return uniquePatients;
-
-  // }
 
 
   const filteredPatients = () => patientUsernames.filter(patient =>

@@ -5,9 +5,11 @@
  * @signinContent
  * - Här kan du redigera texten som visas vid inloggning
  * 
- * @author Viktor Johansson
+ * @authorYtterligare utveckling och anpassningar av Omid Nikzad.
+ * Ursprungliga klasser och komponenter av Viktor Johansson
+ * 
  * @version 1.0.0
- * @since November, 2023
+ * @since November, 2023. Uppdatering i Juni 2024
  */
 
 import React, { useState, useCallback } from 'react';

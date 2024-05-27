@@ -1,3 +1,17 @@
+/**
+ * @fileoverview
+ * Här renderas Admin-sidan. Denna del av koden ansvarar för presentationen
+ * och funktionaliteten av administrationsgränssnittet i applikationen.
+ * 
+ * Detta är en del av ett större projekt som helt och hållet har utvecklats av Omid Nikzad.
+ * 
+ * @author
+ * Utvecklad av Omid Nikzad
+ * 
+ * @version 1.0.0
+ * @since Juni 2024
+ */
+
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import ListPanel from '../components/ListPanel';

@@ -2,9 +2,11 @@
  * @overview
  * Klassen representerar alla knappar med användare i listan
  * 
- * @author Viktor Johansson
+ * @author Ytterligare utveckling och anpassningar av Omid Nikzad.
+ * Ursprungliga klasser och komponenter av Viktor Johansson
+ * 
  * @version 1.0.0
- * @since November, 2023
+ * @since November, 2023.  Uppdatering i Juni 2024
  */
 
 import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
@@ -17,10 +19,10 @@ import Cookies from 'js-cookie';
 
 const ListItem = ({ userRole, patient, patientList, showTests, patientsListData, index, numOfTests, showUser, setOpenIndex, openIndex, showTestUser }) => {
   const [height, setHeight] = useState(openIndex === index ? 'h-28' : 'h-14');
-  const [legPersData, setLegPersData] = useState(null); // Lägg till tillstånd för legPersData
-  const [userLista, setUserLista] = useState([]); // Lägg till tillstånd för userLista
+  const [legPersData, setLegPersData] = useState(null); 
+  const [userLista, setUserLista] = useState([]); 
 
-  const [childrenList, setChildrenList] = useState([]); // Lägg till tillstånd för userLista
+  const [childrenList, setChildrenList] = useState([]); 
 
 
   const usernames = useMemo(() => legPersData ? legPersData.map(user => user.username) : [], [legPersData]);
@@ -49,11 +51,8 @@ const ListItem = ({ userRole, patient, patientList, showTests, patientsListData,
   }, []);
 
   useEffect(() => {
-
-
     const getChildren = () => {
       const children = patientsListData.filter(patient => patient.legPersId === userLegPersId);
-
       setChildrenList(children);
     }
 
@@ -79,14 +78,6 @@ const ListItem = ({ userRole, patient, patientList, showTests, patientsListData,
     handleItemClick();
   };
 
-  const handleClickOutside = (event) => {
-    // const node = ref.current;
-    // if (node && !node.contains(event.target)) {
-    //   setHeight('h-14');
-    // }
-
-  };
-
   const item = (
     <button
       onClick={toggleContent}
@@ -101,7 +92,7 @@ const ListItem = ({ userRole, patient, patientList, showTests, patientsListData,
         ) : (
           <>
             <h1 className='font-light text-lg text-slate-900'>{userLegPersId}</h1>
-            <h1>{childrenList.length} barn</h1>
+            <h1>{childrenList.length} st</h1>
           </>
         )}
       </React.Fragment>
@@ -141,14 +132,14 @@ const ListItem = ({ userRole, patient, patientList, showTests, patientsListData,
 
         <div className='flex justify-between w-full'>
           <h1 className='font-light text-lg text-slate-900'>{userLegPersId}</h1>
-          <h1>{childrenList.length} barn</h1>
+          <h1>{childrenList.length} st</h1>
         </div>
       </div>
       <div className='w-full flex flex-col bg-slate-200 h-fit min-w-[5.2rem] mt-2'>
         {
           childrenList.length === 0 ?
             (
-              <div className='w-full flex justify-center items-center h-full'>Inga barn registrerade</div>
+              <div className='w-full flex justify-center items-center h-full'>Inga registrerade</div>
             )
             :
             (
@@ -175,15 +166,6 @@ const ListItem = ({ userRole, patient, patientList, showTests, patientsListData,
       </div>
     </div>
   );
-
-
-  // useEffect(() => {
-  //   document.addEventListener('mousedown', handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener('mousedown', handleClickOutside);
-  //   };
-  // }, []);
-
 
 
   return (
