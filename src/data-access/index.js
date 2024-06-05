@@ -1,17 +1,19 @@
 /**
  * @overview
- * Här hanteras api-anrop och olika endpoints för basurl.
+ * Här hanteras API-anrop och olika endpoints för basurl.
  * 
- * @author Viktor Johansson
+ * @author
+ * Ursprungliga klasser och komponenter av Viktor Johansson.
+ * Ytterligare utveckling och anpassningar av Omid Nikzad.
+ * 
  * @version 1.0.0
- * @since November, 2023
+ * @since November, 2023.
+ * @updated Juni 2024 för inkludering av nya endpoints.
  */
 
+
 import createFetch from './fetch';
-
 const BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
-
 
 const fetcher = () => {
   if (!BASE_URL) {
@@ -29,7 +31,7 @@ const ApiRoutes = {
     body: obj,
   }),
   verifyLogin: async (user) => {
-    console.log(user)
+    //console.log(user)
     return await fetcher().fetchJsonData({
     endpoint: '/web-login-mapcog',
     method: 'POST',

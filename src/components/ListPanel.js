@@ -4,9 +4,12 @@
  * 
  * @author Ytterligare utveckling och anpassningar av Omid Nikzad.
  * Ursprungliga klasser och komponenter av Viktor Johansson.
+ * 
  * @version 1.0.0
- * @since November, 2023. Uppdatering i Juni 2024
+ * @since November, 2023
+ * @updated Juni, 2024
  */
+
 
 import React, { useEffect, useState } from 'react';
 import ListItem from './ListItem';
@@ -47,8 +50,6 @@ const ListPanel = ({ userRole, legPersData, listData, setChartData, testUser, se
     sortedPatients();
   }, [])
 
-
-
   const filteredPatients = () => patientUsernames.filter(patient =>
     patient.username.toLowerCase().includes(searchInput.toLowerCase())
   );
@@ -59,18 +60,14 @@ const ListPanel = ({ userRole, legPersData, listData, setChartData, testUser, se
     async function fetchLegPersData() {
       try {
         const data = await ApiRoutes.getLegPersData();
-
         setPatientUsernames(data);
 
         if (loggedUser !== undefined && loggedUser !== "" && loggedUser !== "admin") {
-          console.log('data: ', data);
-
+          //console.log('data: ', data);
           const loggedUsername = data.filter(patient =>
             patient.username === loggedUser
           );
-
           // console.log('loggedUsername: ', loggedUsername);
-          
           setPatientUsernames(loggedUsername);
         }
 
@@ -78,7 +75,6 @@ const ListPanel = ({ userRole, legPersData, listData, setChartData, testUser, se
         console.error('Ett fel uppstod vid hämtning av legpers-data', error);
       }
     }
-
     fetchLegPersData();
   }, []);
 
@@ -89,7 +85,6 @@ const ListPanel = ({ userRole, legPersData, listData, setChartData, testUser, se
   const name = testUser && (testUser.firstName === '' || testUser.lastName === '')
     ? 'Okänd Användare'
     : testUser && `${testUser.firstName} ${testUser.lastName}`;
-
 
   return (
     <div className='bg-slate-200 w-full h-full flex flex-col justify-center items-center rounded-md max-h-screen'>
@@ -120,9 +115,7 @@ const ListPanel = ({ userRole, legPersData, listData, setChartData, testUser, se
       <div className={`bg-slate-300 w-[95%] h-full rounded-bl-md rounded-br-md flex flex-col overflow-y-scroll pt-2`}>
         {!tests && !user && patientsData ? (
           <>
-
             {searchInput.length > 0 ? (
-
               filteredPatients() && filteredPatients().map((elem, index) => (
                 <div className='flex flex-col items-center' key={index}>
                   <ListItem
@@ -138,7 +131,6 @@ const ListPanel = ({ userRole, legPersData, listData, setChartData, testUser, se
                     showTestUser={test}
                     userRole={userRole}
                     legPersData={legPersData}
-
                   />
                 </div>
               ))

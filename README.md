@@ -2,9 +2,7 @@
 
 För att sidan ska fungera så behövs en miljövariabel `REACT_APP_API_BASE_URL` läggas till.
 
-
 Utveckling av ytterligare funktionalitet och integrationer hanterades av Omid Nikzad, byggande på en befintlig kodbas skapad av Viktor Johansson. Mer om ursprungsutvecklaren finns på [Viktors hemsida](https://www.vijoh.com).
-
 
 # Getting Started with Create React App
 

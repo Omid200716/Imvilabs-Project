@@ -9,14 +9,15 @@
  * Ursprungliga klasser och komponenter av Viktor Johansson
  * 
  * @version 1.0.0
- * @since November, 2023. Uppdatering i Juni 2024
+ * @since November, 2023
+ * Uppdatering i Juni 2024
  */
+
 
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { signin } from '../api'
-
 
 
 const signinContent = {
@@ -37,8 +38,6 @@ const registerContent = {
 }
 
 
-
-
 function AuthForm({ authMode }) {
   const content = authMode === "register" ? registerContent : signinContent;
 
@@ -54,15 +53,12 @@ function AuthForm({ authMode }) {
     const { isAdmin, isUser, isUser2, isUser3 } = await signin(formState);
 
     if (isAdmin) {
-      // Navigera till admin-vyn
       navigate('/admin');
       Cookies.set('session_user', formState.username, { expires: 1 });
     } else if (isUser || isUser2 || isUser3 ) {
-      // Navigera till användarvyn
       navigate('/');
       Cookies.set('session_user', formState.username, { expires: 1 });
     } else {
-      // Användaren har inte behörighet, visa felmeddelande
       setMSG("Du har inte behörighet att logga in.");
     }
   } catch (err) {
@@ -76,7 +72,6 @@ function AuthForm({ authMode }) {
 
 
   return (
-
     <div className='rounded-3xl px-10 py-4 flex justify-center items-center h-full '>
 
       <div className="w-[20rem] sm:w-[25rem]">
@@ -129,23 +124,12 @@ function AuthForm({ authMode }) {
           </div>
 
           <div className="flex items-center justify-between">
-            {/*<div>
-                  <span>
-                    <a
-                      href={content.linkUrl}
-                      className="text-blue-600 font-bold"
-                      {content.linkText}
-                    </a>
-                    > 
-                   
-                      
-                  </span>
-                </div>*/}
+
             <button type="submit" intent="secondary" className='py-3 w-full bg-slate-600 rounded-lg'>
               <p className='text-white'>{content.buttonText}</p>
             </button>
-          </div>
 
+          </div>
         </form>
       </div>
     </div>
