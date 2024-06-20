@@ -88,15 +88,22 @@ const ListPanel = ({ userRole, legPersData, listData, setChartData, testUser, se
 
   return (
     <div className='bg-slate-200 w-full h-full flex flex-col justify-center items-center rounded-md max-h-screen'>
-      {!tests && loggedUser === "admin" && !user && (<div className='w-[95%] rounded-tl-md rounded-tr-md bg-slate-300 flex justify-center'>
-        <input
-          type="text"
-          placeholder="Sök"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          className="w-[95%] p-1 my-4 border border-gray-400 rounded bg-slate-100"
-        />
-      </div>)}
+      {!tests && loggedUser === "admin" && !user && (
+        <div className='w-[95%] rounded-tl-md rounded-tr-md bg-slate-300 flex flex-col align-items-center'>
+          <input
+            type="text"
+            placeholder="Sök"
+            value={searchInput}
+            onChange={(e) =>
+              onSearch(e.target.value)
+            }
+            className="w-[100%] p-1 my-2 border border-gray-400 rounded bg-slate-100"
+          />
+          <div style={{ textAlign: 'center', width: '100%', color: '#333', fontSize: '16px', marginBottom: '20px' }}>
+            Loggar in som <span style={{ fontWeight: 'bold' }}>{loggedUser}</span>
+          </div>
+
+        </div>)}
       {tests && (
         <div className='w-[95%] rounded-tl-md rounded-tr-md bg-slate-300 pl-5 pt-5'>
           <h1 className='text-center pb-2'>{name}</h1>
@@ -166,7 +173,6 @@ const ListPanel = ({ userRole, legPersData, listData, setChartData, testUser, se
             ) : user ? (
               <div className='flex flex-col items-center'>
                 <UserDetails user={user} />
-
               </div>
             ) : (
               <div className='h-full w-full flex justify-center items-center'><BeatLoader className="mb-10" color="#000" /></div>

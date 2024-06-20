@@ -62,10 +62,7 @@ const Admin = () => {
         <div className='flex flex-row w-full h-full overflow-hidden'>
           <div className='min-w-full sm:min-w-[20rem]'>
             <ListPanel userRole="imvi" listData={patientData} setChartUser={setChartUser} testUser={testUser} setChartData={setChartData} mobile={false} showTestUser={showTestUser} user={user} showUser={showUser} showTests={showTests} tests={tests} setOpenIndex={setOpenIndex} setOpenTestIndex={setOpenTestIndex} openIndex={openIndex} openTestIndex={openTestIndex} />
-
           </div>
-
-
           <div className='bg-slate-50 rounded-md flex justify-center w-full h-full mr-2 overflow-y-auto'>
             <Statistics chartData={chartData} listData={patientData} chartUser={chartUser} testUser={testUser} setFirstChartData={setFirstChartData} setSecondChartData={setSecondChartData} secondChartData={secondChartData} firstChartData={firstChartData} className="rounded-md" />
           </div>
